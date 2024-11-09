@@ -56,12 +56,16 @@ class Restaurante:
         media = round(soma_notas / quantidade_notas, 1)
         return media
 
-#    def adicionar_bebida_no_cardapio(self, bebida):
-#        self._cardapio.append(bebida)
-
-#    def adicionar_prato_no_cardapio(self, prato):
-#        self._cardapio.append(prato)
-
     def adicionar_no_cardapio(self, item):
         if isinstance(item, ItemCardapio):
             self._cardapio.append(item)
+
+    @property
+    def exibir_cardapio(self):
+        print(f'Cardápio do restaurante {self._nome}: \n')
+
+        for i, item in enumerate(self._cardapio, start=1):
+            if hasattr(item, 'descricao'):
+                print(f'{i}. {item._nome} | Preço: R${item._preco:.2f} | Descrição: {item.descricao}')
+            else:
+                print(f'{i}. {item._nome} | Preço: R${item._preco:.2f} | Tamanho: {item.tamanho}')

@@ -12,8 +12,7 @@ restaurante_praca.adicionar_no_cardapio(bebida_suco)
 restaurante_praca.adicionar_no_cardapio(prato_feijoada)
 
 def main():
-    print(bebida_suco)
-    print(prato_feijoada)
+    restaurante_praca.exibir_cardapio
 
 if __name__ == '__main__':
     main()
