@@ -8,21 +8,33 @@ class Restaurante:
 
         #Self é utilizado para indicar que aquele atributo pertence 
         # somente a classe instanciada
-        self.nome = nome
-        self.categoria = categoria
-        self.ativo = False
+        self._nome = nome.title()
+        self._categoria = categoria.upper()
+        self._ativo = False
         Restaurante.restaurantes.append(self)
 
     #Método de exibição de texto
     def __str__(self):
-        return f'{self.nome} | {self.categoria}'
+        return f'{self._nome} | {self._categoria}'
     
-    def listar_restaurantes():
-        for r in Restaurante.restaurantes:
-            print(f'{r.nome} | {r.categoria} | {r.ativo}')
+    #Método da classe
+    @classmethod
+    def listar_restaurantes(cls):
+        print(f'{'Nome do restaurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'}')
+        for r in cls.restaurantes:
+            print(f'{r._nome.ljust(25)} | {r._categoria.ljust(25)} | {r.ativo}')
+
+    #Pega um atributo e modifica como aquele atributo é lido
+    @property
+    def ativo(self):
+        return '☑' if self._ativo else '☐'
+    
+    #Método dos atributos
+    def alternar_estado(self):
+        self._ativo = not self._ativo
 
 restaurante_praca = Restaurante('Praça', 'Gourmet')
-
+restaurante_praca.alternar_estado()
 restaurante_pizza = Restaurante('Pizza Express', 'Italiano')
 
 Restaurante.listar_restaurantes()
