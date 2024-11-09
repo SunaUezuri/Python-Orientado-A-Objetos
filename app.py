@@ -22,6 +22,9 @@ def exibir_nome_programa():
 ╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═════╝░╚═════╝░
 ''')
 
+def voltar_menu_principal():
+    input('\nPressione uma tecla para voltar ao menu principal.')
+    main()
 
 def exibir_opcoes():
     print('1. Cadastrar restaurante')
@@ -32,39 +35,35 @@ def exibir_opcoes():
 
 #Definindo uma função
 def finalizar_app():
-    #Limpando o console utiizando a biblioteca os
-    os.system('cls')
-    print('Finalizando programa\n')
+    exibir_subtitulo('Finalizando programa.')
 
 
 def opcao_invalida():
     print('Opção inválida!\n')
-    input('Digite uma tecla para voltar ao menu principal.')
-    main()
+    voltar_menu_principal()
+
+def exibir_subtitulo(texto:str):
+    os.system('cls')
+    print(texto)
+    print('\n')
 
 
 def cadastrar_novo_restaurante():
-    os.system('cls')
-
-    print('Cadastro de novos restaurantes\n')
+    exibir_subtitulo('Cadastro de restaurantes')
 
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
     restaurantes.append(nome_do_restaurante)
     print(f'Restaurante {nome_do_restaurante} cadastrado com sucesso!\n')
 
-    input('Pressione uma tecla para voltar ao menu principal.')
-    main()
+    voltar_menu_principal()
 
 def listar_restaurantes():
-    os.system('cls')
-
-    print('Listando os restaurantes\n')
+    exibir_subtitulo('Listando os restaurantes')
 
     for r in restaurantes:
         print(f'.{r}')
 
-    input('\nPressione uma tecla para voltar ao menu principal.')
-    main()
+    voltar_menu_principal()
 
 def escolher_opcoes():
     
