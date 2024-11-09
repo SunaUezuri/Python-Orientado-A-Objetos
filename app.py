@@ -1,6 +1,8 @@
 #Importando bibliotecas
 import os
 
+restaurantes = []
+
 #Podemos usar triplas aspas para manter uma quebra de linha ao invés do "\n"
 def exibir_nome_programa():
     print(''' 
@@ -41,6 +43,19 @@ def opcao_invalida():
     main()
 
 
+def cadastrar_novo_restaurante():
+    os.system('cls')
+
+    print('Cadastro de novos restaurantes\n')
+
+    nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
+    restaurantes.append(nome_do_restaurante)
+    print(f'Restaurante {nome_do_restaurante} cadastrado com sucesso!\n')
+
+    input('Pressione uma tecla para voltar ao menu principal.')
+    main()
+
+
 def escolher_opcoes():
     
     try:
@@ -48,7 +63,7 @@ def escolher_opcoes():
 
         match opcao_escolhida:
             case 1:
-                print('Cadastro de restaurantes...')
+                cadastrar_novo_restaurante()
             case 2:
                 print('Listando restaurantes...')
             case 3:
