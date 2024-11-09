@@ -34,28 +34,39 @@ def finalizar_app():
     os.system('cls')
     print('Finalizando programa\n')
 
+
+def opcao_invalida():
+    print('Opção inválida!\n')
+    input('Digite uma tecla para voltar ao menu principal.')
+    main()
+
+
 def escolher_opcoes():
-    opcao_escolhida = int(input('Escolha uma opção: '))
+    
+    try:
+        opcao_escolhida = int(input('Escolha uma opção: '))
 
-    match opcao_escolhida:
-        case 1:
-            print('Cadastro de restaurantes...')
-        case 2:
-            print('Listando restaurantes...')
-        case 3:
-            print('Ativando restaurantes...')
-        case 4:
-            finalizar_app()
-        case _:
-            print('Opção inválida. Tente novamente.')
-            escolher_opcoes()
-
+        match opcao_escolhida:
+            case 1:
+                print('Cadastro de restaurantes...')
+            case 2:
+                print('Listando restaurantes...')
+            case 3:
+                print('Ativando restaurantes...')
+            case 4:
+                finalizar_app()
+            case _:
+                opcao_invalida()
+    except:
+        opcao_invalida()
 
 #Definindo este arquivo como o principal do programa, fazendo com que ele não possa ser importado
 def main():
+    os.system('cls')
     exibir_nome_programa()
     exibir_opcoes()
     escolher_opcoes()
+
 
 
 if __name__ == '__main__':
