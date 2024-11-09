@@ -69,7 +69,7 @@ def listar_restaurantes():
     exibir_subtitulo('Listando os restaurantes')
 
     
-    print(f'{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(22)} | {'Status'}')
+    print(f'{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(20)} | {'Status'}')
     for r in restaurantes:
         nome_restaurante = r['nome']
         categoria = r['categoria']
