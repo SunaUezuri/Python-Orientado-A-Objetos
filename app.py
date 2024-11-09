@@ -32,7 +32,7 @@ def voltar_menu_principal():
 def exibir_opcoes():
     print('1. Cadastrar restaurante')
     print('2. Listar restaurantes')
-    print('3. Ativar restaurante')
+    print('3. Alternar estado do restaurante')
     print('4. Sair\n')
 
 
@@ -47,7 +47,10 @@ def opcao_invalida():
 
 def exibir_subtitulo(texto:str):
     os.system('cls')
+    linha = '*' * (len(texto))
+    print(linha)
     print(texto)
+    print(linha)
     print('\n')
 
 
@@ -66,14 +69,38 @@ def listar_restaurantes():
     exibir_subtitulo('Listando os restaurantes')
 
     
-
+    print(f'{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(22)} | {'Status'}')
     for r in restaurantes:
         nome_restaurante = r['nome']
         categoria = r['categoria']
-        ativo = r['ativo']
-        print(f'- {nome_restaurante} | {categoria} | {ativo}')
+        ativo = 'ativado' if r['ativo'] else 'desativado'
+        print(f'- {nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}')
 
     voltar_menu_principal()
+
+
+def alternar_estado_do_restaurante():
+    exibir_subtitulo('Ativando/desativando restaurantes')
+
+    nome_restaurante = input('Digite o nome do restaurante que deseja alternar o estado: ')
+
+    restaurante_encontrado = False
+
+    for r in restaurantes:
+        if nome_restaurante == r['nome']:
+            restaurante_encontrado = True
+            r['ativo'] = not r['ativo']
+            if r['ativo']:
+                mensagem = f'O restaurante {nome_restaurante} foi ativado com sucesso' 
+            else:
+                mensagem = f'O restaurante {nome_restaurante} foi desativado com sucesso'
+
+            print(mensagem)
+    if not restaurante_encontrado:
+        print(f'Restaurante {nome_restaurante} não encontrado')
+
+    voltar_menu_principal()
+
 
 def escolher_opcoes():
     
@@ -86,7 +113,7 @@ def escolher_opcoes():
             case 2:
                 listar_restaurantes()
             case 3:
-                print('Ativando restaurantes...')
+                alternar_estado_do_restaurante()
             case 4:
                 finalizar_app()
             case _:
