@@ -7,4 +7,4 @@ class Bebida(ItemCardapio):
 
 
     def __str__(self):
-        return f'{self._nome} | {self._tamanho} | R$ {self._preco:.2f}'
+        return f'{self._nome} | {self._tamanho} | Preço: {self._preco:.2f}'

@@ -8,7 +8,8 @@ bebida_suco = Bebida('Suco de melância', 5.0, 'Grande')
 
 prato_feijoada = Prato('Feijoada', 30.0, 'Típica feijoada nordestina')
 
-
+restaurante_praca.adicionar_no_cardapio(bebida_suco)
+restaurante_praca.adicionar_no_cardapio(prato_feijoada)
 
 def main():
     print(bebida_suco)
