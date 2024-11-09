@@ -1,7 +1,10 @@
 #Importando bibliotecas
 import os
 
-restaurantes = ['Sushi', 'Sorvete', 'Pizza']
+restaurantes = [{'nome' : 'Bazzinga', 'categoria': 'chinesa', 'ativo': False}, 
+                {'nome': 'PizzaHurt', 'categoria': 'francesa', 'ativo': True},
+                {'nome': 'DonaldsMc', 'categoria': 'fast food', 'ativo': False}
+                ]
 
 #Podemos usar triplas aspas para manter uma quebra de linha ao invés do "\n"
 def exibir_nome_programa():
@@ -60,8 +63,13 @@ def cadastrar_novo_restaurante():
 def listar_restaurantes():
     exibir_subtitulo('Listando os restaurantes')
 
+    
+
     for r in restaurantes:
-        print(f'.{r}')
+        nome_restaurante = r['nome']
+        categoria = r['categoria']
+        ativo = r['ativo']
+        print(f'- {nome_restaurante} | {categoria} | {ativo}')
 
     voltar_menu_principal()
 
