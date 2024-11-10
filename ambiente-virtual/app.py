@@ -25,5 +25,5 @@ else:
 
 for nome_do_restaurante, dados in dados_restaurante.items():
     nome_do_arquivo = f'{nome_do_restaurante}.json'
-    with open(nome_do_arquivo, 'w') as arquivo_retaurante:
+    with open(nome_do_arquivo, 'w', encoding='utf-8') as arquivo_retaurante:
         json.dump(dados, arquivo_retaurante, indent=4)
